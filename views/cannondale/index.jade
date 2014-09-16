@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .jumbotron
+        h1 Cannondale 2015
+        p
+            这个一个非官方的Canondale山地自行车介绍网站，提供最新Cannondale山地车信息，供广大车友参考鉴赏。另外附上各款山地车价格以及折人民币价格。
+        p
+            所有图片均来自Cannondale官方网站
+    //end jumbotron
+    .row
+        - for( var i = 0; i < bikes.length; i++)
+            //获取详情地址
+            - var url = '/cannondale/bike/' + bikes[i].name
+            .col-6.col-sm-6.col-lg-4
+                div.panel.panel-green
+                    div.panel-heading
+                        h4= bikes[i].name
+                    div.panel-body
+                        img.img-thumbnail( src= bikes[i].picurl)
+                    a( href = url)
+                        div.panel-footer
+                            h5.pull-left= bikes[i].price.gbp
+                            h5.pull-right 详情 »
+                            div.clearfix

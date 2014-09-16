@@ -1,0 +1,105 @@
+extends layout
+
+block content
+    if bikes[0]
+        div.panel.panel-success
+            div.panel-heading
+                h2= bikes[0].name
+            div.panel-body
+                img.img-thumbnail( src= bikes[0].picurl)
+            div.panel-footer
+                ul.nav.nav-tabs
+                    li( class='active')
+                        a( href='#features' data-toggle='tab')技术简介
+                    li
+                        a( href='#specifications' data-toggle='tab')详细配置
+                div.tab-content
+                    div.tab-pane.fade.in.active( id='features')
+                        h3 特性
+                        p= bikes[0].features
+                        h3 科技
+                        p= bikes[0].technology
+                    div.tab-pane.fade( id='specifications')
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 车架
+                                p= bikes[0].specifications.frame
+                            .col-12.col-sm-4.col-lg-4
+                                h4 前叉
+                                p= bikes[0].specifications.fork
+                            .col-12.col-sm-4.col-lg-4
+                                h4 曲柄
+                                p= bikes[0].specifications.crank
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 中轴
+                                p= bikes[0].specifications.bottom_bracket
+                            .col-12.col-sm-4.col-lg-4
+                                h4 变速把手
+                                p= bikes[0].specifications.shifters
+                            .col-12.col-sm-4.col-lg-4
+                                h4 传动齿盘
+                                p= bikes[0].specifications.cog_set
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 链条
+                                p= bikes[0].specifications.chain
+                            .col-12.col-sm-4.col-lg-4
+                                h4 前变速器
+                                p= bikes[0].specifications.front_derailleur
+                            .col-12.col-sm-4.col-lg-4
+                                h4 后变速器
+                                p= bikes[0].specifications.rear_derailleur
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 轮圈
+                                p= bikes[0].specifications.rims
+                            .col-12.col-sm-4.col-lg-4
+                                h4 花鼓
+                                p= bikes[0].specifications.hubs
+                            .col-12.col-sm-4.col-lg-4
+                                h4 外胎
+                                p= bikes[0].specifications.tires
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 脚踏
+                                p= bikes[0].specifications.pedals
+                            .col-12.col-sm-4.col-lg-4
+                                h4 刹车
+                                p= bikes[0].specifications.brakes
+                            .col-12.col-sm-4.col-lg-4
+                                h4 车把
+                                p= bikes[0].specifications.handlebar
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 把立
+                                p= bikes[0].specifications.stem
+                            .col-12.col-sm-4.col-lg-4
+                                h4 碗组
+                                p= bikes[0].specifications.headset
+                            .col-12.col-sm-4.col-lg-4
+                                h4 制动杆
+                                p= bikes[0].specifications.brake_levers
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 辐条
+                                p= bikes[0].specifications.spokes
+                            .col-12.col-sm-4.col-lg-4
+                                h4 把套
+                                p= bikes[0].specifications.grips
+                            .col-12.col-sm-4.col-lg-4
+                                h4 鞍座
+                                p= bikes[0].specifications.saddle
+                        .row
+                            .col-12.col-sm-4.col-lg-4
+                                h4 座杆
+                                p= bikes[0].specifications.seatpost
+                            .col-12.col-sm-4.col-lg-4
+                                h4 后叉
+                                p= bikes[0].specifications.rear_shock
+                            .col-12.col-sm-4.col-lg-4
+                                h4 其他
+                                p= bikes[0].specifications.extras
+        div.alert.alert-success
+            -var price = '价格: ' + bikes[0].price.gbp + '(英镑) ' + bikes[0].price.gtc + '(折人民币) '
+            h5= price

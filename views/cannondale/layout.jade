@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(href='/stylesheets/sb-admin-2.css' rel='stylesheet')
+    link(href='/stylesheets/sticky-footer-navbar.css', rel='stylesheet')
+    link(href='/stylesheets/signin.css', rel='stylesheet')
+    link(href='/font-awesome-4.1.0/css/font-awesome.min.css' rel='stylesheet' type='text/css')
+  body
+    // Fixed navbar
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/cannondale') #{title}
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/cannondale') 首页
+            //li
+              //a(href='#') 关于
+            //li
+              //a(href='#contact') 联系
+          - if ( user)
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href='/cannondale/manager') 管理
+                li
+                    a(href='/cannondale/logout') 登出
+    .container
+
+        block content
+
+    // /container
+    hr
+    #footer
+      .container
+            p.text-muted.credit
+            | Create by 
+            a(href='http://www.outprog.com') Xiongwei 
+    //
+       Bootstrap core JavaScript
+    //================================================== 
+    // Placed at the end of the document so the pages load faster
+    script(src='/javascripts/jquery-2.1.1.min.js')
+    script(src='/javascripts/bootstrap.js')
