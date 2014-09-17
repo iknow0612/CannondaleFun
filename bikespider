@@ -1,0 +1,50 @@
+var name='SCALPEL 29 CARBON 3';
+var geometry = '';
+var picurl = '/images/bikes/scalpel29carbon3.jpg'
+var price = {
+    eur: '',
+    etc: '',
+    gbp: '£2,999.99',
+    gtc: '¥30,110.53',
+    };
+var time = new Date;
+
+var bike = {};
+var features = {};
+var technology = {};
+var specifications = {};
+
+var a = document.getElementById('bike-features');
+var b = a.getElementsByClassName('tgc');
+features.h1 = b[0].innerText;
+var b = a.getElementsByClassName('tab_uppr_left');
+features.h1_value = b[0].innerText;
+var b = a.getElementsByTagName('h3');
+features.h2 = b[0].innerText;
+var b = a.getElementsByTagName('li');
+var c = {};
+for( var i = 0; i < b.length; i++) c['value_'+i] = b[i].innerText;
+features.h2_value = c;
+var b = a.getElementsByTagName('h2');
+features.h3 = b[1].innerText;
+var b = a.getElementsByClassName('rider_profile');
+features.h3_value = b[0].innerText;
+
+var a = document.getElementById('bike-technology');
+var b = a.getElementsByTagName( 'strong');
+var c = a.getElementsByTagName( 'li');
+for( var i = 0; i < b.length; i++) technology[b[i].innerText.toLowerCase().split(' ').join('_')] = c[i].innerText;
+
+var a = document.getElementById('bike-specs');
+var b = a.getElementsByTagName('h5');
+var c = a.getElementsByTagName('p');
+for( var i = 0; i < b.length; i++) specifications[b[i].innerText.toLowerCase().split(' ').join('_')]=c[i].innerText;
+
+bike.name = name;
+bike.features = features;
+bike.technology = "";
+bike.specifications = specifications;
+bike.picurl = picurl;
+bike.geometry = geometry;
+bike.price = price;
+bike.time = time;

@@ -16,7 +16,7 @@ block content
                 div.tab-content
                     div.tab-pane.fade.in.active( id='features')
                         h3 特性
-                        p= bikes[0].features
+                        p= bikes[0].features.h1_value
                         h3 科技
                         p= bikes[0].technology
                     div.tab-pane.fade( id='specifications')
@@ -66,7 +66,7 @@ block content
                                 p= bikes[0].specifications.pedals
                             .col-12.col-sm-4.col-lg-4
                                 h4 刹车
-                                p= bikes[0].specifications.brakes
+                                p= bikes[0].specifications.brake
                             .col-12.col-sm-4.col-lg-4
                                 h4 车把
                                 p= bikes[0].specifications.handlebar
@@ -93,7 +93,7 @@ block content
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 座杆
-                                p= bikes[0].specifications.seatpost
+                                p= bikes[0].specifications.seat_post
                             .col-12.col-sm-4.col-lg-4
                                 h4 后叉
                                 p= bikes[0].specifications.rear_shock
