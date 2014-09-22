@@ -10,9 +10,9 @@ block content
             div.panel-footer
                 ul.nav.nav-tabs
                     li( class='active')
-                        a( href='#features' data-toggle='tab')技术简介
+                        a( href='#features' data-toggle='tab') 技术简介
                     li
-                        a( href='#specifications' data-toggle='tab')详细配置
+                        a( href='#specifications' data-toggle='tab') 详细配置
                 div.tab-content
                     div.tab-pane.fade.in.active( id='features')
                         h3 特性
@@ -103,3 +103,4 @@ block content
         div.alert.alert-success
             -var price = '价格: ' + bikes[0].price.gbp + '(英镑) ' + bikes[0].price.gtc + '(折人民币) '
             h5= price
+        include comment.jade

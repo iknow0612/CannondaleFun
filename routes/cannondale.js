@@ -5,6 +5,7 @@ var crypto = require( 'crypto');
 
 var User = require( '../models/cannondale/user.js');
 var Bike = require( '../models/cannondale/bike.js');
+var Comment = require( '../models/cannondale/comment.js');
 
 /* GET cannondale home page. */
 router.get('/', function(req, res) {
@@ -69,16 +70,22 @@ router.get( '/manager', function( req, res) {
      res.render('cannondale/manager', { title: 'Cannondale Fun' });
 });
 
-//查看bike
+//查看bie和评论
 router.get( '/bike/:name', function( req, res) {
     Bike.get( req.params.name, function( err, bikes){
         if( err) {
             bikes = [];
         }
-        console.log( bikes);
-        res.render('cannondale/bike', {
-            title: 'Cannondale Fun',
-            bikes: bikes,
+        Comment.get( req.params.name, function( err, comments){
+            if( err) {
+                comments = [];
+            }
+            //console.log( comments);
+            res.render('cannondale/bike', {
+                title: 'Cannondale Fun',
+                bikes: bikes,
+                comments: comments,
+            });
         });
     });
 });
@@ -134,6 +141,36 @@ router.post( '/bike', function( req, res) {
     });
 });
 
+//添加评论
+router.post('/comment', function( req, res) {
+    if( req.body.name == '') {
+        req.flash( 'error', '昵称不得为空');
+        return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+    }
+    if( req.body.content.length < 2) {
+        req.flash( 'error', '评论过短');
+        return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+    }
+    var ip = req.connection.remoteAddress;
+    //console.log( ip);
+    var comment = new Comment( {
+        bikename: req.body.bikename,
+        name: req.body.name,
+        email: req.body.email,
+        content: req.body.content,
+        ip: ip,
+        });
+    //console.log( comment);
+    comment.save( function( err) {
+        //console.log( req.body.name);
+        if( err) {
+            req.flash( 'error', err);
+            return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+        }
+        req.flash( 'success', '评论添加成功');
+        res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+    });
+});
 
 //检查登录状态
 function checkLogin( req, res, next) {
