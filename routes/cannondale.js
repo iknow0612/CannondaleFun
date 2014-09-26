@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
         if( err) {
             bikes = [];
         }
-        console.log( bikes);
+        //console.log( bikes);
         res.render('cannondale/index', {
             title: 'Cannondale Fun',
             bikes: bikes,
