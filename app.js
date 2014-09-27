@@ -9,11 +9,11 @@ var flash = require('connect-flash');
 
 //models
 var cannondaleMongoStore = require( 'connect-mongo')(session);
-var cannondaleSettings = require( './models/cannondale/settings');
+var cannondaleSettings = require( './models/settings');
 
 //routes
-var routes = require('./routes/index');
-var users = require('./routes/users');
+//var routes = require('./routes/index');
+//var users = require('./routes/users');
 var cannondale = require('./routes/cannondale');
 
 var app = express();
@@ -22,7 +22,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
+//app.use(favicon());
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -38,7 +39,7 @@ app.use( session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
-  console.log("app.usr local");
+  //console.log("app.usr local");
   res.locals.user = req.session.user;
   res.locals.post = req.session.post;
   var error = req.flash('error');
@@ -49,9 +50,9 @@ app.use(function(req, res, next){
   next();
 });
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/cannondale', cannondale);
+//app.use('/', routes);
+//app.use('/users', users);
+app.use('/', cannondale);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

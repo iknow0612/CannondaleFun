@@ -1,11 +1,12 @@
-var name='SCALPEL 29 CARBON 3';
+var name='SUPERSIX EVO CARBON ULTEGRA DI2';
+var type='road';
 var geometry = '';
-var picurl = '/images/bikes/scalpel29carbon3.jpg'
+var picurl = '/images/bikes/supersixevocarbonultegradi2.jpg'
 var price = {
     eur: '',
     etc: '',
-    gbp: '£2,999.99',
-    gtc: '¥30,110.53',
+    gbp: '£30,999.99',
+    gtc: '¥30,856.12',
     };
 var time = new Date;
 
@@ -25,7 +26,7 @@ var b = a.getElementsByTagName('li');
 var c = {};
 for( var i = 0; i < b.length; i++) c['value_'+i] = b[i].innerText;
 features.h2_value = c;
-var b = a.getElementsByTagName('h2');
+var b = a.getElementsByTagName('h3');
 features.h3 = b[1].innerText;
 var b = a.getElementsByClassName('rider_profile');
 features.h3_value = b[0].innerText;
@@ -41,6 +42,7 @@ var c = a.getElementsByTagName('p');
 for( var i = 0; i < b.length; i++) specifications[b[i].innerText.toLowerCase().split(' ').join('_')]=c[i].innerText;
 
 bike.name = name;
+bike.type = type;
 bike.features = features;
 bike.technology = "";
 bike.specifications = specifications;
@@ -48,3 +50,4 @@ bike.picurl = picurl;
 bike.geometry = geometry;
 bike.price = price;
 bike.time = time;
+JSON.stringify(bike);

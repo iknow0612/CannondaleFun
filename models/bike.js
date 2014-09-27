@@ -49,7 +49,7 @@ Bike.prototype.save = function save( callback) {
 
 };
 
-Bike.get = function get ( name, callback) {
+Bike.get = function get ( name, type, callback) {
     mongodb.open( function( err, db) {
         if( err) {
             return callback( err);
@@ -64,7 +64,10 @@ Bike.get = function get ( name, callback) {
             if( name) {
                 qry.name = name;
             }
-            collection.find( qry).sort( {time: 1}).toArray( function( err, docs){
+            if( type) {
+                qry.type = type;
+            }
+            collection.find( qry).sort( {price: -1}).toArray( function( err, docs){
                 mongodb.close();
                 if( err) {
                     callback( err, null);

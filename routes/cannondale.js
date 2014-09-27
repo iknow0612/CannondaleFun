@@ -3,18 +3,44 @@ var app = express();
 var router = express.Router();
 var crypto = require( 'crypto');
 
-var User = require( '../models/cannondale/user.js');
-var Bike = require( '../models/cannondale/bike.js');
-var Comment = require( '../models/cannondale/comment.js');
+var User = require( '../models/user.js');
+var Bike = require( '../models/bike.js');
+var Comment = require( '../models/comment.js');
 
 /* GET cannondale home page. */
 router.get('/', function(req, res) {
-    Bike.get( null, function( err, bikes){
+    Bike.get( null, null, function( err, bikes){
         if( err) {
             bikes = [];
         }
         //console.log( bikes);
-        res.render('cannondale/index', {
+        res.render('index', {
+            title: 'Cannondale Fun',
+            bikes: bikes,
+        });
+    });
+});
+//山地
+router.get( '/mountain', function( req, res) {
+    Bike.get( null, 'mountain', function( err, bikes){
+        if( err) {
+            bikes = [];
+        }
+        //console.log( bikes);
+        res.render('index', {
+            title: 'Cannondale Fun',
+            bikes: bikes,
+        });
+    });
+});
+//公路
+router.get( '/road', function( req, res) {
+    Bike.get( null, 'road', function( err, bikes){
+        if( err) {
+            bikes = [];
+        }
+        //console.log( bikes);
+        res.render('index', {
             title: 'Cannondale Fun',
             bikes: bikes,
         });
@@ -24,7 +50,7 @@ router.get('/', function(req, res) {
 //登录
 router.get( '/login', checkNotLogin);
 router.get( '/login', function( req, res) {
-    res.render('cannondale/login', {});
+    res.render('login', {});
 });
 
 router.post( '/login', function( req, res) {
@@ -44,16 +70,16 @@ router.post( '/login', function( req, res) {
         if( !user) {
             //console.log( 'username fail');
             req.flash( 'error', '用户名或密码不正确');
-            return res.redirect( '/cannondale/login');
+            return res.redirect( '/login');
         }
         if( user.password != password) {
             //console.log( 'password fail');
             req.flash( 'error', '用户名或密码不正确');
-            return res.redirect( '/cannondale/login');
+            return res.redirect( '/login');
         }
         req.session.user = user;
         req.flash( 'success', '登录成功');
-        res.redirect( '/cannondale/manager');
+        res.redirect( '/manager');
     });
 
 });
@@ -62,17 +88,17 @@ router.get( '/logout', checkLogin);
 router.get( '/logout', function( req, res) {
     req.session.user = null;
     req.flash( 'success', '登出成功');
-    res.redirect('/cannondale');
+    res.redirect('/');
 });
 //管理
 router.get( '/manager', checkLogin);
 router.get( '/manager', function( req, res) {
-     res.render('cannondale/manager', { title: 'Cannondale Fun' });
+     res.render('manager', { title: 'Cannondale Fun' });
 });
 
 //查看bie和评论
 router.get( '/bike/:name', function( req, res) {
-    Bike.get( req.params.name, function( err, bikes){
+    Bike.get( req.params.name, null, function( err, bikes){
         if( err) {
             bikes = [];
         }
@@ -81,7 +107,7 @@ router.get( '/bike/:name', function( req, res) {
                 comments = [];
             }
             //console.log( comments);
-            res.render('cannondale/bike', {
+            res.render('bike', {
                 title: 'Cannondale Fun',
                 bikes: bikes,
                 comments: comments,
@@ -134,10 +160,10 @@ router.post( '/bike', function( req, res) {
     bike.save( function( err) {
         if( err) {
             req.flash( 'error', err);
-            return res.redirect( '/cannondale/manager');
+            return res.redirect( '/manager');
         }
         req.flash( 'success', '添加成功');
-        res.redirect( '/cannondale/manager');
+        res.redirect( '/manager');
     });
 });
 
@@ -145,11 +171,11 @@ router.post( '/bike', function( req, res) {
 router.post('/comment', function( req, res) {
     if( req.body.name == '') {
         req.flash( 'error', '昵称不得为空');
-        return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+        return res.redirect( '/bike/' + req.body.bikename + '#add_comment');
     }
     if( req.body.content.length < 2) {
         req.flash( 'error', '评论过短');
-        return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+        return res.redirect( '/bike/' + req.body.bikename + '#add_comment');
     }
     var ip = req.connection.remoteAddress;
     //console.log( ip);
@@ -165,10 +191,10 @@ router.post('/comment', function( req, res) {
         //console.log( req.body.name);
         if( err) {
             req.flash( 'error', err);
-            return res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+            return res.redirect( '/bike/' + req.body.bikename + '#add_comment');
         }
         req.flash( 'success', '评论添加成功');
-        res.redirect( '/cannondale/bike/' + req.body.bikename + '#add_comment');
+        res.redirect( '/bike/' + req.body.bikename + '#add_comment');
     });
 });
 
@@ -176,7 +202,7 @@ router.post('/comment', function( req, res) {
 function checkLogin( req, res, next) {
     if( !req.session.user) {
         req.flash( 'error', '尚未登录');
-        return res.redirect( '/cannondale/login');
+        return res.redirect( '/login');
     }
     next();
 }
@@ -184,7 +210,7 @@ function checkLogin( req, res, next) {
 function checkNotLogin( req, res, next) {
     if( req.session.user) {
         req.flash( 'error', '已登录');
-        return res.redirect( '/cannondale/manager');
+        return res.redirect( '/manager');
     }
     next();
 }
