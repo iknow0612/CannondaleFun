@@ -1,12 +1,12 @@
-var name='SUPERSIX EVO CARBON ULTEGRA DI2';
-var type='road';
+var name='F29 CARBON 3';
+var type='mountain';
 var geometry = '';
-var picurl = '/images/bikes/supersixevocarbonultegradi2.jpg'
+var picurl = '/images/bikes/f29carbon3.jpg'
 var price = {
     eur: '',
     etc: '',
-    gbp: '£30,999.99',
-    gtc: '¥30,856.12',
+    gbp: '£24,999.99',
+    gtc: '¥23,893.26',
     };
 var time = new Date;
 
