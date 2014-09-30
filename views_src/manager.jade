@@ -1,0 +1,158 @@
+extends layout
+
+block content
+    include alert.jade
+    h2 添加自行车
+    form( method='post' action='/bike' role='form')
+        .row.form-group
+            .col-xs-12
+                label
+                    自行车名
+                input.form-control( type='text' name='name')
+        .row.form-group
+            .col-xs-6
+                label
+                    特性
+                textarea.form-control( rows='3' name='features')
+            .col-xs-6
+                label
+                    工艺
+                textarea.form-control( rows='3' name='technology')
+        h4 详细说明
+        .row.form-group
+            .col-xs-4
+                label
+                    车架
+                input.form-control( type='text' name='frame')
+            .col-xs-4
+                label
+                    前叉
+                input.form-control( type='text' name='fork')
+            .col-xs-4
+                label
+                    曲柄
+                input.form-control( type='text' name='crank')
+        .row.form-group
+            .col-xs-4
+                label
+                    中轴
+                input.form-control( type='text' name='bottom_bracket')
+            .col-xs-4
+                label
+                    变速把手
+                input.form-control( type='text' name='shifters')
+            .col-xs-4
+                label
+                    大齿盘
+                input.form-control( type='text' name='cog_set')
+        .row.form-group
+            .col-xs-4
+                label
+                    链条
+                input.form-control( type='text' name='chain')
+            .col-xs-4
+                label
+                    前变速器
+                input.form-control( type='text' name='front_derailleur')
+            .col-xs-4
+                label
+                    后变速器
+                input.form-control( type='text' name='rear_derailleur')
+        .row.form-group
+            .col-xs-4
+                label
+                    轮圈
+                input.form-control( type='text' name='rims')
+            .col-xs-4
+                label
+                    花鼓
+                input.form-control( type='text' name='hubs')
+            .col-xs-4
+                label
+                    外胎
+                input.form-control( type='text' name='tires')
+        .row.form-group
+            .col-xs-4
+                label
+                    脚踏
+                input.form-control( type='text' name='pedals')
+            .col-xs-4
+                label
+                    刹车
+                input.form-control( type='text' name='brakes')
+            .col-xs-4
+                label
+                    车把
+                input.form-control( type='text' name='handlebar')
+        .row.form-group
+            .col-xs-4
+                label
+                    把立
+                input.form-control( type='text' name='stem')
+            .col-xs-4
+                label
+                    碗组
+                input.form-control( type='text' name='headset')
+            .col-xs-4
+                label
+                    制动杆
+                input.form-control( type='text' name='brake_levers')
+        .row.form-group
+            .col-xs-4
+                label
+                    辐条
+                input.form-control( type='text' name='spokes')
+            .col-xs-4
+                label
+                    把套
+                input.form-control( type='text' name='grips')
+            .col-xs-4
+                label
+                    鞍座
+                input.form-control( type='text' name='saddle')
+        .row.form-group
+            .col-xs-4
+                label
+                    座杆
+                input.form-control( type='text' name='seatpost')
+            .col-xs-4
+                label
+                    后叉
+                input.form-control( type='text' name='rear_shock')
+            .col-xs-4
+                label
+                    其他
+                input.form-control( type='text' name='extras')
+        h4 几何与图片
+        .row.form-group
+            .col-xs-4
+                label
+                    几何
+                input.form-control( type='text' name='geometry')
+            .col-xs-4
+                label
+                    图片
+                input.form-control( type='text' name='picurl')
+        h4 价格
+        .row.form-group
+            .col-xs-3
+                label
+                    欧元
+                input.form-control( type='text' name='eur')
+            .col-xs-3
+                label
+                    欧元折人民币
+                input.form-control( type='text' name='etc')
+            .col-xs-3
+                label
+                    英镑
+                input.form-control( type='text' name='gbp')
+            .col-xs-3
+                label
+                    英镑折人民币
+                input.form-control( type='text' name='gtc')
+        .row.form-group
+            .col-xs-2
+                button.btn.btn-lg.btn-success.btn-block(type='submit') 添加
+            .col-xs-2
+                button.btn.btn-lg.btn-danger.btn-block(type='reset') 重置

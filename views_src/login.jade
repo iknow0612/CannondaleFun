@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    include alert.jade
+    form( class='form-signin' method='post' role='form')
+        h2.form-signin-heading 管理登录
+        input.form-control(id='username' name='username' type='text', placeholder='用户', autofocus='autofocus')
+        input.form-control(id='password' name='password' type='password', placeholder='密码')
+        //label.checkbox
+            //input(type='checkbox', value='remember-me')
+            //| Remember me
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') 登录

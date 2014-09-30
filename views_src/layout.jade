@@ -1,0 +1,65 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='')
+        meta(name='author', content='')
+
+        title= title
+        link.data-remove(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link.data-remove(href='/bower_components/sb-admin-v2/css/sb-admin-2.css' rel='stylesheet')
+        link.data-remove(href='/bower_components/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css')
+        link.data-remove(href='/stylesheets/sticky-footer-navbar.css', rel='stylesheet')
+        link.data-remove(href='/stylesheets/signin.css', rel='stylesheet')
+    body
+        // Fixed navbar
+        .navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') #{title}
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='/') 首页
+                        li
+                            a(href='/mountain') 山地
+                        li
+                            a(href='/road') 公路
+                        //li
+                          //a(href='#') 关于
+                        //li
+                          //a(href='#contact') 联系
+                    - if ( user)
+                        ul.nav.navbar-nav.navbar-right
+                            li
+                                a(href='/manager') 管理
+                            li
+                                a(href='/logout') 登出
+        .container
+
+            block content
+
+        // /container
+        hr
+        #footer
+            .container
+                .row
+                    .col-12.col-sm-4
+                        p.text-muted.credit
+                        | Create by
+                        a(href='http://www.outprog.com') Xiongwei
+                    .col-12.col-sm-8
+                        p.text-muted.credit
+                        | Donate bitcoin to me buy bike
+                        a(href='https://blockchain.info/address/1AeLV6AWUYZVKtS7gLQkhM5xj3uCevW4i2') 1AeLV6AWUYZVKtS7gLQkhM5xj3uCevW4i2
+        //
+           Bootstrap core JavaScript
+        //==================================================
+        // Placed at the end of the document so the pages load faster
+        script.data-remove(src='/bower_components/jquery/dist/jquery.min.js')
+        script.data-remove(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
