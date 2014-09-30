@@ -85,6 +85,22 @@ module.exports = function (grunt) {
                         '/dist/js/jquery-bootstrap.js'
                     ]
                 }
+            },
+            sftp: {
+                upload: {
+                    files: {
+                        "./": [ "public/**"]
+                    },
+                    options: {
+                        path: "/home/node/CannondaleFun/public",
+                        srcBasePath: "public/",
+                        host: "www.outprog.com",
+                        username: "root",
+                        password: "",
+                        showProgress: true,
+                        createDirectories: true
+                    }
+                }
             }
         }
     );
