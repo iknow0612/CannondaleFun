@@ -123,13 +123,13 @@ module.exports = function (grunt) {
         if (replacePosition != -1) {
             this.data.replace.forEach(function (value, index) {
                 if (/js$/.test(value)) {
-                    contentToAdd += "\n\tscript(src='" + value + "')";
+                    contentToAdd += "\n        script(src='" + value + "')";
                 }
             });
         }
-        console.log(contentToAdd);
+        //console.log(contentToAdd);
         fileContent = fileContent.substring(0, replacePosition) + contentToAdd + fileContent.substring(replacePosition, fileContent.length);
-        console.log(fileContent);
+        //console.log(fileContent);
 
         replacePosition = -1;
         contentToAdd = "";
@@ -140,13 +140,13 @@ module.exports = function (grunt) {
         if (replacePosition != -1) {
             this.data.replace.forEach(function (value, index) {
                 if (/css$/.test(value)) {
-                    contentToAdd += "\n\tlink(href='" + value + "', rel='stylesheet')";
+                    contentToAdd += "\n        link(href='" + value + "', rel='stylesheet')";
                 }
             });
         }
         fileContent = fileContent.substring(0, replacePosition) + contentToAdd + fileContent.substring(replacePosition, fileContent.length);
         fileContent = fileContent.replace(scriptReg, "").replace(linkReg, "");
-        console.log(fileContent);
+        //console.log(fileContent);
         grunt.file.write(this.data.file, fileContent);
     });
 
