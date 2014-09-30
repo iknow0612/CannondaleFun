@@ -1,0 +1,23 @@
+hr
+-for( var i = 0; i < comments.length; i++)
+    blockquote
+        p= comments[i].content
+        small= comments[i].name
+
+include alert.jade
+
+h4 添加评论
+form( id='add_comment' method='post' action='/comment' role='form')
+    input( type='hidden' name='bikename' value=bikes[0].name)
+    .row
+        .col-12.col-sm-6
+            div.form-group
+                input.form-control( type='text' name='name' placeholder='输入昵称')
+        .col-12.col-sm-6
+            div.form-group
+                div.input-group
+                    div.input-group-addon @
+                    input.form-control( type='email' name='email' placeholder='输入邮箱')
+    div.form-group
+        textarea.form-control( name='content' rows='4')
+    button.btn.btn-default( type='submit') 评论
