@@ -6,7 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+
+//gizp
 var compress = require('compression');
+
+//log
+var log4js = require('log4js');
+log4js.configure('logs/my_logger_config.json', {});
+var logger = log4js.getLogger('cannondale');
+logger.setLevel('INFO');
 
 //models
 var cannondaleMongoStore = require( 'connect-mongo')(session);
@@ -25,8 +33,9 @@ app.set('view engine', 'jade');
 
 //app.use(favicon());
 app.use(compress());
+app.use(log4js.connectLogger(logger, { level: log4js.levels.INFO, format:':method :url' }));
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
