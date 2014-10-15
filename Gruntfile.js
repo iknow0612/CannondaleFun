@@ -5,7 +5,8 @@ module.exports = function (grunt) {
             pkg: grunt.file.readJSON("./package.json"),
             copy: {
                 all: {
-                    cwd: "./views_src/",
+                    //cwd: "./views_src/",
+                    cwd: "./views_empty/",
                     src: [ "./**" ],
                     dest: "./views/",
                     expand: true
@@ -83,7 +84,7 @@ module.exports = function (grunt) {
                         '/dist/css/bootstrap-sbadmin-font-awesome.css',
                         '/dist/css/app.css',
                         '/dist/js/jquery-bootstrap.js'
-                    ]
+                   ]
                 }
             },
             sftp: {
