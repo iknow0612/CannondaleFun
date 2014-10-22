@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    if bikes[0]
+        h2= bikes[0].name
+        form( method='post' action='/edit' role='form')
+            input.form-control( type='hidden' name='name' value=bikes[0].name)
+            .row.form-group
+                .col-xs-6
+                    label
+                        特性
+                    textarea.form-control( rows='3' name='features' )= bikes[0].features.h1_value
+            .row.form-group
+                .col-xs-2
+                    button.btn.btn-lg.btn-success.btn-block(type='submit') 保存

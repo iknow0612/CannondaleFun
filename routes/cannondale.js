@@ -93,10 +93,42 @@ router.get( '/logout', function( req, res) {
 //管理
 router.get( '/manager', checkLogin);
 router.get( '/manager', function( req, res) {
-     res.render('manager', { title: 'Cannondale Fun' });
+    Bike.get( null, null, function( err, bikes){
+        if( err) {
+            bikes = [];
+        }
+        //console.log( bikes);
+        res.render('manager', {
+            title: 'Cannondale Fun',
+            bikes: bikes,
+        });
+    });
+});
+//编辑自行车
+router.get( '/edit/:bikename', checkLogin);
+router.get( '/edit/:bikename', function( req, res) {
+    Bike.get( req.params.bikename, null, function( err, bikes) {
+        if( err) {
+            bikes = [];
+        }
+        res.render( 'edit', {
+            title: 'Cannondale Fun',
+            bikes: bikes
+        });
+    });
+});
+//保存编辑
+router.post( '/edit', checkLogin);
+router.post( '/edit', function( req, res) {
+    //console.log( req.body.name);
+    //console.log( req.body.features);
+    Bike.update( req.body.name, req.body.features, function(){
+        res.redirect( '/manager');
+    });
+
 });
 
-//查看bie和评论
+//查看bike和评论
 router.get( '/bike/:name', function( req, res) {
     Bike.get( req.params.name, null, function( err, bikes){
         if( err) {

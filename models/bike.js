@@ -84,3 +84,28 @@ Bike.get = function get ( name, type, callback) {
         });
     });
 };
+
+Bike.update = function update ( name, h1_value, callback ) {
+    mongodb.open( function( err, db) {
+        if( err) {
+            return callback( err);
+        }
+
+        db.collection( 'bikes', function( err, collection) {
+            if( err) {
+                mongodb.close();
+                return callback( err);
+            }
+            collection.update( {name: name},
+                {$set: {features:{h1_value: h1_value}}},
+                { safe: true},
+                function( err, res){
+                    if( err) {
+                        console.log( err);
+                    }
+                    mongodb.close();
+                    callback( 'ok');
+                });
+        });
+    });
+};
