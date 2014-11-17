@@ -17,9 +17,9 @@ block content
                     div.panel-heading
                         h6= bikes[i].name
                     div.panel-body
-                        img.img-thumbnail( src= '/images/bikes_min/' + bikes[i].picurl)
+                        img.img-thumbnail( src= '/images/bikes_min/' + bikes[i].picurl, width='700px', height='400px')
                     a( href = url)
                         div.panel-footer
-                            h5.pull-left= bikes[i].price.gtc
+                            h5.pull-left= bikes[i].price.usd
                             h5.pull-right 详情 »
                             div.clearfix

@@ -9,7 +9,7 @@ var Comment = require( '../models/comment.js');
 
 /* GET cannondale home page. */
 router.get('/', function(req, res) {
-    Bike.get( null, null, function( err, bikes){
+    Bike.get( null, null, 'name', function( err, bikes){
         if( err) {
             bikes = [];
         }
@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 });
 //山地
 router.get( '/mountain', function( req, res) {
-    Bike.get( null, 'mountain', function( err, bikes){
+    Bike.get( null, 'MOUNTAIN', 'name', function( err, bikes){
         if( err) {
             bikes = [];
         }
@@ -35,7 +35,7 @@ router.get( '/mountain', function( req, res) {
 });
 //公路
 router.get( '/road', function( req, res) {
-    Bike.get( null, 'road', function( err, bikes){
+    Bike.get( null, 'ROAD', 'name', function( err, bikes){
         if( err) {
             bikes = [];
         }
@@ -93,7 +93,7 @@ router.get( '/logout', function( req, res) {
 //管理
 router.get( '/manager', checkLogin);
 router.get( '/manager', function( req, res) {
-    Bike.get( null, null, function( err, bikes){
+    Bike.get( null, null, 'name', function( err, bikes){
         if( err) {
             bikes = [];
         }
@@ -107,7 +107,7 @@ router.get( '/manager', function( req, res) {
 //编辑自行车
 router.get( '/edit/:bikename', checkLogin);
 router.get( '/edit/:bikename', function( req, res) {
-    Bike.get( req.params.bikename, null, function( err, bikes) {
+    Bike.get( req.params.bikename, null, 'price', function( err, bikes) {
         if( err) {
             bikes = [];
         }
@@ -123,14 +123,14 @@ router.post( '/edit', function( req, res) {
     //console.log( req.body.name);
     //console.log( req.body.features);
     Bike.update( req.body.name, req.body.features, function(){
-        res.redirect( '/manager');
+        res.redirect( '/manager#' + req.body.name);
     });
 
 });
 
 //查看bike和评论
 router.get( '/bike/:name', function( req, res) {
-    Bike.get( req.params.name, null, function( err, bikes){
+    Bike.get( req.params.name, null, null,function( err, bikes){
         if( err) {
             bikes = [];
         }

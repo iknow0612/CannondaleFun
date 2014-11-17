@@ -23,84 +23,85 @@ block content
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 车架
-                                p= bikes[0].specifications.frame
+                                p= bikes[0].specifications.Frame
                             .col-12.col-sm-4.col-lg-4
                                 h4 前叉
-                                p= bikes[0].specifications.fork
+                                p= bikes[0].specifications.Fork
                             .col-12.col-sm-4.col-lg-4
                                 h4 曲柄
-                                p= bikes[0].specifications.crank
+                                p= bikes[0].specifications.Crank
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 中轴
-                                p= bikes[0].specifications.bottom_bracket
+                                p= bikes[0].specifications.BottomBracket
                             .col-12.col-sm-4.col-lg-4
                                 h4 变速把手
-                                p= bikes[0].specifications.shifters
+                                p= bikes[0].specifications.Shifters
                             .col-12.col-sm-4.col-lg-4
                                 h4 传动齿盘
-                                p= bikes[0].specifications.cog_set
+                                p= bikes[0].specifications.CogSet
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 链条
-                                p= bikes[0].specifications.chain
+                                p= bikes[0].specifications.Chain
                             .col-12.col-sm-4.col-lg-4
                                 h4 前变速器
-                                p= bikes[0].specifications.front_derailleur
+                                p= bikes[0].specifications.FrontDerailleur
                             .col-12.col-sm-4.col-lg-4
                                 h4 后变速器
-                                p= bikes[0].specifications.rear_derailleur
+                                p= bikes[0].specifications.RearDerailleur
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 轮圈
-                                p= bikes[0].specifications.rims
+                                p= bikes[0].specifications.Rims
                             .col-12.col-sm-4.col-lg-4
                                 h4 花鼓
-                                p= bikes[0].specifications.hubs
+                                p= bikes[0].specifications.Hubs
                             .col-12.col-sm-4.col-lg-4
                                 h4 外胎
-                                p= bikes[0].specifications.tires
+                                p= bikes[0].specifications.Tires
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 脚踏
-                                p= bikes[0].specifications.pedals
+                                p= bikes[0].specifications.Pedals
                             .col-12.col-sm-4.col-lg-4
                                 h4 刹车
-                                p= bikes[0].specifications.brakes
+                                p= bikes[0].specifications.Brakes
                             .col-12.col-sm-4.col-lg-4
                                 h4 车把
-                                p= bikes[0].specifications.handlebar
+                                p= bikes[0].specifications.Handlebar
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 把立
-                                p= bikes[0].specifications.stem
+                                p= bikes[0].specifications.Stem
                             .col-12.col-sm-4.col-lg-4
                                 h4 碗组
-                                p= bikes[0].specifications.headset
+                                p= bikes[0].specifications.Headset
                             .col-12.col-sm-4.col-lg-4
                                 h4 制动杆
-                                p= bikes[0].specifications.brake_levers
+                                p= bikes[0].specifications.BrakeLevers
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 辐条
-                                p= bikes[0].specifications.spokes
+                                p= bikes[0].specifications.Spokes
                             .col-12.col-sm-4.col-lg-4
                                 h4 把套
-                                p= bikes[0].specifications.grips
+                                p= bikes[0].specifications.Grips
                             .col-12.col-sm-4.col-lg-4
                                 h4 鞍座
-                                p= bikes[0].specifications.saddle
+                                p= bikes[0].specifications.Saddle
                         .row
                             .col-12.col-sm-4.col-lg-4
                                 h4 座杆
-                                p= bikes[0].specifications.seat_post
+                                p= bikes[0].specifications.SeatPost
                             .col-12.col-sm-4.col-lg-4
                                 h4 后叉
-                                p= bikes[0].specifications.rear_shock
+                                p= bikes[0].specifications.RearShock
                             .col-12.col-sm-4.col-lg-4
                                 h4 其他
-                                p= bikes[0].specifications.extras
+                                p= bikes[0].specifications.Extras
         div.alert.alert-success
-            -var price = '价格: ' + bikes[0].price.gbp + '(英镑) ' + bikes[0].price.gtc + '(折人民币) '
+            -var cny = parseFloat( bikes[0].price.usd.match( /\d+/)[0]) * 6.12
+            -var price = '价格: ' + bikes[0].price.usd + '(美元) ' + cny + '(折人民币) '
             h5= price
         include comment.jade

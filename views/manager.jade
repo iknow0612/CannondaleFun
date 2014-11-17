@@ -4,7 +4,7 @@ block content
     include alert.jade
     h2 自行车列表
     - for( var i = 0; i < bikes.length; i++)
-        .row
+        .row( id=bikes[i].name)
             //车名
             h4= bikes[i].name
             p= bikes[i].features.h1_value
