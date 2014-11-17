@@ -16,7 +16,7 @@ do
         if [ $? -eq 1 ] ;
         then
                 echo start
-                screen -S CF nodejs ./bin/www
+                screen -S CF node ./bin/www
         fi;
         sleep 5;
 done
