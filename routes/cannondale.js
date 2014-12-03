@@ -86,9 +86,13 @@ router.post( '/login', function( req, res) {
 //登出
 router.get( '/logout', checkLogin);
 router.get( '/logout', function( req, res) {
-    req.session.user = null;
-    req.flash( 'success', '登出成功');
-    res.redirect('/');
+    //req.session.user = null;
+    //req.flash( 'success', '登出成功');
+    //res.redirect('/');
+    req.session.destroy( function() {
+        //req.flash( 'success', '登出成功');
+        res.redirect('/');
+    });
 });
 //管理
 router.get( '/manager', checkLogin);
