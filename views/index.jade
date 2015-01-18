@@ -20,7 +20,7 @@ block content
                         img.img-thumbnail( src= '/images/bikes_min/' + bikes[i].picurl, width='700px', height='400px')
                     a( href = url)
                         div.panel-footer
-                            -var cny = bikes[i].price.cny || ('¥ ' + parseFloat( bikes[i].price.usd.match( /\d+/)[0]) * 6.12)
+                            -var cny = bikes[i].price.cny || ('¥ ' + parseFloat( bikes[i].price.usd.match( /\d+/)[0]) * 6.12 + '(美元折算)')
                             h5.pull-left= cny
                             h5.pull-right 详情 »
                             div.clearfix
