@@ -126,7 +126,11 @@ router.post( '/edit', checkLogin);
 router.post( '/edit', function( req, res) {
     //console.log( req.body.name);
     //console.log( req.body.features);
-    Bike.update( req.body.name, req.body.features, function(){
+    var value = {
+                    features:{h1_value: req.body.features},
+                    price: JSON.parse( req.body.price)
+                };
+    Bike.update( req.body.name, value, function(){
         res.redirect( '/manager#' + req.body.name);
     });
 

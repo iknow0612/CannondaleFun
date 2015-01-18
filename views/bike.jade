@@ -101,7 +101,7 @@ block content
                                 h4 其他
                                 p= bikes[0].specifications.Extras
         div.alert.alert-success
-            -var cny = parseFloat( bikes[0].price.usd.match( /\d+/)[0]) * 6.12
-            -var price = '价格: ' + bikes[0].price.usd + '(美元) ' + cny + '(折人民币) '
+            -var cny = bikes[0].price.cny || parseFloat( bikes[0].price.usd.match( /\d+/)[0]) * 6.12
+            -var price = '价格: ' + bikes[0].price.usd + '(美元) ' + cny + '(人民币) '
             h5= price
         include comment.jade
