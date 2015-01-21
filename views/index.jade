@@ -16,11 +16,12 @@ block content
                 div.panel.panel-green
                     div.panel-heading
                         h6= bikes[i].name
-                    div.panel-body
-                        img.img-thumbnail( src= '/images/bikes_min/' + bikes[i].picurl, width='700px', height='400px')
+                    a( href = url)
+                        div.panel-body
+                            img.img-thumbnail( src= '/images/bikes_min/' + bikes[i].picurl, width='700px', height='400px')
                     a( href = url)
                         div.panel-footer
                             -var cny = bikes[i].price.cny || ('¥ ' + parseFloat( bikes[i].price.usd.match( /\d+/)[0]) * 6.12 + '(美元折算)')
-                            h5.pull-left= cny
-                            h5.pull-right 详情 »
+                            p.pull-left= cny
+                            p.pull-right 详情 »
                             div.clearfix
